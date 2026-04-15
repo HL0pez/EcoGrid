@@ -1,4 +1,4 @@
-package ucu.edu.aed.tda.interfaces;
+package java.ucu.edu.aed.tda.interfaces;
 
 import java.util.function.Predicate;
 
