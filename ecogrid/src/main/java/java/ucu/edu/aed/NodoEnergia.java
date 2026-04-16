@@ -1,17 +1,16 @@
 package java.ucu.edu.aed;
 
-import java.ucu.edu.aed.tda.implementaciones.Nodo;
+public class NodoEnergia{
 
-public class NodoEnergia extends Nodo<NodoEnergia> {
-
+    private static int ContadorId = 0;
     public int Id;
     public String fuente;
     public int capacidadMax;
     public int cargaActual;
 
-    public NodoEnergia(int Id, String fuente, int capacidadMax, int cargaActual) {
-        super(new NodoEnergia(Id, fuente, capacidadMax, cargaActual));
-        this.Id = Id;
+    public NodoEnergia(String fuente, int capacidadMax, int cargaActual) {
+        
+        this.Id = ++ContadorId;
         this.fuente = fuente;
         this.capacidadMax = capacidadMax;
         this.cargaActual = cargaActual;
@@ -33,10 +32,6 @@ public class NodoEnergia extends Nodo<NodoEnergia> {
         return cargaActual;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
-    }
-
     public void setFuente(String fuente) {
         this.fuente = fuente;
     }
@@ -50,6 +45,7 @@ public class NodoEnergia extends Nodo<NodoEnergia> {
     }
 
     public void imprimirNodoEnergia() {
+        System.out.println("------------------------------");
         System.out.println("Id: " + this.Id);
         System.out.println("Fuente: " + this.fuente);
         System.out.println("Capacidad Maxima: " + this.capacidadMax);

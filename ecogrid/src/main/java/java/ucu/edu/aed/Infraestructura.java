@@ -3,15 +3,14 @@ package java.ucu.edu.aed;
 import java.ucu.edu.aed.tda.implementaciones.ListaEnlazada;
 import java.ucu.edu.aed.tda.implementaciones.Nodo;
 
-public class GestionInfraestructura<T> extends ListaEnlazada<T> {
+public class Infraestructura<T> {
 
     ListaEnlazada<NodoEnergia> listaNodo = new ListaEnlazada<>();
     ListaEnlazada<Consumidor> listaConsumidor = new ListaEnlazada<>();
 
-    public GestionInfraestructura(ListaEnlazada<NodoEnergia> listaNodo, ListaEnlazada<Consumidor> listaConsumidor) {
-        super();
-        this.listaNodo = listaNodo;
-        this.listaConsumidor = listaConsumidor;
+    public Infraestructura() {
+        this.listaNodo = new ListaEnlazada<NodoEnergia>();
+        this.listaConsumidor = new ListaEnlazada<Consumidor>();
     }
 
     public boolean registrarNodo(NodoEnergia nodo) {
