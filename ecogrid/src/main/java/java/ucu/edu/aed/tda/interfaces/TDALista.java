@@ -1,5 +1,6 @@
 package java.ucu.edu.aed.tda.interfaces;
 
+import java.ucu.edu.aed.tda.implementaciones.Nodo;
 import java.util.function.Predicate;
 
 /**
@@ -139,4 +140,5 @@ public interface TDALista<T> {
      * </p>
      */
     void vaciar();
+
 }
