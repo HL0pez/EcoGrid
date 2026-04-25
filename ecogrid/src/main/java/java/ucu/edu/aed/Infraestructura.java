@@ -4,8 +4,9 @@ import java.ucu.edu.aed.tda.implementaciones.ListaEnlazada;
 import java.ucu.edu.aed.tda.implementaciones.Nodo;
 import java.ucu.edu.aed.tda.implementaciones.Cola;
 import java.ucu.edu.aed.tda.implementaciones.PilaListaEnlazada;
+import java.ucu.edu.aed.interfaces.IInfraestructura;
 
-public class Infraestructura<T> {
+public class Infraestructura<T> implements IInfraestructura {
 
     ListaEnlazada<NodoEnergia> listaNodo = new ListaEnlazada<>();
     ListaEnlazada<Consumidor> listaConsumidor = new ListaEnlazada<>();
