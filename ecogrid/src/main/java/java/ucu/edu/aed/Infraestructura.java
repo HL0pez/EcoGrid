@@ -8,17 +8,27 @@ import java.ucu.edu.aed.interfaces.IInfraestructura;
 
 public class Infraestructura<T> implements IInfraestructura {
 
-    ListaEnlazada<NodoEnergia> listaNodo = new ListaEnlazada<>();
-    ListaEnlazada<Consumidor> listaConsumidor = new ListaEnlazada<>();
-    Cola<Solicitud> colaSolicitudes = new Cola<>();
-    PilaListaEnlazada<Solicitud> historialTransacciones = new PilaListaEnlazada<>();
+    private ListaEnlazada<NodoEnergia> listaNodo;
+    private ListaEnlazada<Consumidor> listaConsumidor;
+    private Cola<Solicitud> colaSolicitudes;
+    private PilaListaEnlazada<Solicitud> historialTransacciones;
 
-    public Infraestructura() {
-        this.listaNodo = new ListaEnlazada<NodoEnergia>();
-        this.listaConsumidor = new ListaEnlazada<Consumidor>();
-        this.colaSolicitudes = new Cola<Solicitud>();
-        this.historialTransacciones = new PilaListaEnlazada<Solicitud>();
+    private static Infraestructura instancia = null;
+
+    private Infraestructura() {
+        this.listaNodo = new ListaEnlazada<>();
+        this.listaConsumidor = new ListaEnlazada<>();
+        this.colaSolicitudes = new Cola<>();
+        this.historialTransacciones = new PilaListaEnlazada<>();
     }
+
+    public static Infraestructura getInstancia() {
+        if (instancia == null) {
+            instancia = new Infraestructura();
+        }
+        return instancia;
+    }
+
 
     public boolean registrarNodo(NodoEnergia nodo) {
         Nodo<NodoEnergia> nodoExistente = listaNodo.buscar(nodo);
