@@ -40,5 +40,14 @@ public class Infraestructura<T> {
         listaConsumidor.agregar(consumidor);
         return true;
     }
+    public ListaEnlazada<String> listarNodos() {
+        ListaEnlazada<String> resultado = new ListaEnlazada<>();
+        Nodo<NodoEnergia> nodoActual = listaNodo.getCabeza();
+        while (nodoActual != null) {
+            resultado.agregar(nodoActual.getDato().toString());
+            nodoActual = nodoActual.getSiguiente();
+        }
+        return resultado;
+    }
 
 }
