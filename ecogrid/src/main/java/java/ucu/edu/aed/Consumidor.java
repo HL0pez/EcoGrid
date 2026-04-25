@@ -1,7 +1,7 @@
 package java.ucu.edu.aed;
+import java.ucu.edu.aed.interfaces.IConsumidor;
 
-
-public class Consumidor {
+public class Consumidor implements IConsumidor {
 
     private static int ContadorId = 0;
     public int Id;

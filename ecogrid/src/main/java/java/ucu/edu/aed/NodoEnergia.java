@@ -1,6 +1,7 @@
 package java.ucu.edu.aed;
+import java.ucu.edu.aed.interfaces.INodoEnergia;
 
-public class NodoEnergia{
+public class NodoEnergia implements INodoEnergia {
 
     private static int ContadorId = 0;
     public int Id;
@@ -16,34 +17,47 @@ public class NodoEnergia{
         this.cargaActual = cargaActual;
     }
 
+    @Override
     public int getId() {
         return Id;
     }
 
+    @Override
     public String getFuente() {
         return fuente;
     }
 
+    @Override
     public int getCapacidadMax() {
         return capacidadMax;
     }
 
+    @Override
     public int getCargaActual() {
         return cargaActual;
     }
 
+    @Override
     public void setFuente(String fuente) {
         this.fuente = fuente;
     }
 
+    @Override
     public void setCapacidadMax(int capacidadMax) {
         this.capacidadMax = capacidadMax;
     }
 
+    @Override
     public void setCargaActual(int cargaActual) {
         this.cargaActual = cargaActual;
     }
 
+    @Override
+    public void actualizarNodoEnergia(int cargaActual) {
+        this.cargaActual = cargaActual;
+    }
+
+    @Override
     public void imprimirNodoEnergia() {
         System.out.println("------------------------------");
         System.out.println("Id: " + this.Id);

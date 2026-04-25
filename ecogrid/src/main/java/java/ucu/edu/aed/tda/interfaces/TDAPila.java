@@ -26,7 +26,7 @@ public interface TDAPila<T> extends TDALista<T> {
      * @return el elemento ubicado en el tope de la pila
      * @throws java.util.NoSuchElementException si la pila está vacía
      */
-    T tope();
+    T peek();
 
     /**
      * Remueve y retorna el elemento ubicado en el tope de la pila.
@@ -39,12 +39,12 @@ public interface TDAPila<T> extends TDALista<T> {
      * @return el elemento removido del tope de la pila
      * @throws java.util.NoSuchElementException si la pila está vacía
      */
-    T saca();
+    T pop();
 
     /**
      * Inserta un elemento en el tope de la pila.
      *
      * @param dato el elemento a insertar
      */
-    void mete(T dato);
+    void push(T dato);
 }

@@ -2,15 +2,21 @@ package java.ucu.edu.aed;
 
 import java.ucu.edu.aed.tda.implementaciones.ListaEnlazada;
 import java.ucu.edu.aed.tda.implementaciones.Nodo;
+import java.ucu.edu.aed.tda.implementaciones.Cola;
+import java.ucu.edu.aed.tda.implementaciones.PilaListaEnlazada;
 
 public class Infraestructura<T> {
 
     ListaEnlazada<NodoEnergia> listaNodo = new ListaEnlazada<>();
     ListaEnlazada<Consumidor> listaConsumidor = new ListaEnlazada<>();
+    Cola<Solicitud> colaSolicitudes = new Cola<>();
+    PilaListaEnlazada<Solicitud> historialTransacciones = new PilaListaEnlazada<>();
 
     public Infraestructura() {
         this.listaNodo = new ListaEnlazada<NodoEnergia>();
         this.listaConsumidor = new ListaEnlazada<Consumidor>();
+        this.colaSolicitudes = new Cola<Solicitud>();
+        this.historialTransacciones = new PilaListaEnlazada<Solicitud>();
     }
 
     public boolean registrarNodo(NodoEnergia nodo) {

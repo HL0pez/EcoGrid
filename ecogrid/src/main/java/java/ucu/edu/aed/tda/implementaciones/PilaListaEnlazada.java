@@ -1,6 +1,7 @@
 package java.ucu.edu.aed.tda.implementaciones;
+import java.ucu.edu.aed.tda.interfaces.TDAPila;
 
-public class PilaListaEnlazada<T> extends ListaEnlazada<T> {
+public class PilaListaEnlazada<T> extends ListaEnlazada<T> implements TDAPila<T> {
 
     public void push(T elem) {
         Nodo<T> nuevoNodo = new Nodo<>(elem);
