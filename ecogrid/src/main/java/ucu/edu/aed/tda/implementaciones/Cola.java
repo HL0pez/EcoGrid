@@ -2,7 +2,6 @@ package ucu.edu.aed.tda.implementaciones;
 
 import ucu.edu.aed.tda.interfaces.TDACola;
 
-
 public class Cola<T> extends ListaEnlazada<T> implements TDACola<T> {
     protected Nodo<T> ultimo;
 
@@ -11,14 +10,17 @@ public class Cola<T> extends ListaEnlazada<T> implements TDACola<T> {
         if (esVacia()) {
             throw new java.util.NoSuchElementException("La cola está vacía");
         }
-        return ultimo.getDato();
+        return cabeza.getDato();
     }
 
     @Override
     public boolean poneEnCola(T dato) {
-        Nodo<T> nuevodato = new Nodo<>(dato);
         agregar(dato);
-        this.ultimo = nuevodato;
+        if (ultimo == null) {
+            ultimo = cabeza;
+        } else {
+            ultimo = ultimo.getSiguiente();
+        }
         return true;
     }
 

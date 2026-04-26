@@ -6,7 +6,7 @@ import ucu.edu.aed.tda.implementaciones.ListaEnlazada;
 import ucu.edu.aed.tda.implementaciones.Nodo;
 import ucu.edu.aed.tda.implementaciones.PilaListaEnlazada;
 
-public class Infraestructura<T> implements IInfraestructura {
+public class Infraestructura<T> extends ListaEnlazada implements IInfraestructura {
 
     private ListaEnlazada<NodoEnergia> listaNodo;
     private ListaEnlazada<Consumidor> listaConsumidor;
@@ -29,7 +29,6 @@ public class Infraestructura<T> implements IInfraestructura {
         return instancia;
     }
 
-
     public boolean registrarNodo(NodoEnergia nodo) {
         Nodo<NodoEnergia> nodoExistente = listaNodo.buscar(nodo);
         if (nodoExistente != null) {
@@ -51,42 +50,37 @@ public class Infraestructura<T> implements IInfraestructura {
         listaConsumidor.agregar(consumidor);
         return true;
     }
+
     public ListaEnlazada<String> listarNodos() {
         ListaEnlazada<String> resultado = new ListaEnlazada<>();
         Nodo<NodoEnergia> nodoActual = listaNodo.getCabeza();
         while (nodoActual != null) {
             resultado.agregar(nodoActual.getDato().toString());
+
             nodoActual = nodoActual.getSiguiente();
+
         }
         return resultado;
     }
 
-    @Override
-    public void eliminarNodo(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'eliminarNodo'");
+    public void eliminarNodo(NodoEnergia nodo) {
+        listaNodo.eliminar(nodo);
+    }
+
+    public Nodo buscarNodo(NodoEnergia nodo) {
+        return listaNodo.buscar(nodo);
+    }
+
+    public void eliminarConsumidor(Consumidor cons) {
+        listaConsumidor.eliminar(cons);
+    }
+
+    public Nodo buscarConsumidor(Consumidor cons) {
+        return listaConsumidor.buscar(cons);
     }
 
     @Override
-    public NodoEnergia buscarNodo(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarNodo'");
-    }
-
-    @Override
-    public void eliminarConsumidor(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'eliminarConsumidor'");
-    }
-
-    @Override
-    public Consumidor buscarConsumidor(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarConsumidor'");
-    }
-
-    @Override
-    public void encolarSolicitud(Consumidor consumidor){
+    public void encolarSolicitud(Consumidor consumidor) {
         Solicitud solicitud = consumidor.crearSolicitud();
         colaSolicitudes.poneEnCola(solicitud);
     }
@@ -105,8 +99,15 @@ public class Infraestructura<T> implements IInfraestructura {
 
     @Override
     public ListaEnlazada<String> listarConsumidores() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listarConsumidores'");
+        ListaEnlazada<String> resultado = new ListaEnlazada<>();
+        Nodo<Consumidor> consumidorActual = listaConsumidor.getCabeza();
+        while (consumidorActual != null) {
+            resultado.agregar(consumidorActual.getDato().toString());
+
+            consumidorActual = consumidorActual.getSiguiente();
+
+        }
+        return resultado;
     }
 
     @Override
