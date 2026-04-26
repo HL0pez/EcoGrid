@@ -86,9 +86,9 @@ public class Infraestructura<T> implements IInfraestructura {
     }
 
     @Override
-    public void encolarSolicitud(Consumidor consumidor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'encolarSolicitud'");
+    public void encolarSolicitud(Consumidor consumidor){
+        Solicitud solicitud = consumidor.crearSolicitud();
+        colaSolicitudes.poneEnCola(solicitud);
     }
 
     @Override
