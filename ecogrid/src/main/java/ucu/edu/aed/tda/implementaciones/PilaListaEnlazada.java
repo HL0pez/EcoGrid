@@ -1,5 +1,4 @@
 package ucu.edu.aed.tda.implementaciones;
-
 import ucu.edu.aed.tda.interfaces.TDAPila;
 
 public class PilaListaEnlazada<T> extends ListaEnlazada<T> implements TDAPila<T> {
