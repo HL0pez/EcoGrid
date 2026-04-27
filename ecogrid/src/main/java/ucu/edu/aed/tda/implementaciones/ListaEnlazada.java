@@ -203,27 +203,6 @@ public class ListaEnlazada<T> implements TDALista<T> {
         return null;
     }
 
-    public boolean eliminar(T elem) {
-        if (cabeza == null) {
-            System.out.println("La lista está vacía.");
-            return false;
-        }
 
-        if (cabeza.getDato().equals(elem)) {
-            cabeza = cabeza.getSiguiente();
-            return true;
-        }
-
-        Nodo<T> actual = cabeza;
-        while (actual.getSiguiente() != null) {
-            if (actual.getSiguiente().getDato().equals(elem)) {
-                actual.setSiguiente(actual.getSiguiente().getSiguiente());
-                return true;
-            }
-            actual = actual.getSiguiente();
-        }
-        System.out.println("Elemento no encontrado: " + elem);
-        return false;
-    }
 
 }

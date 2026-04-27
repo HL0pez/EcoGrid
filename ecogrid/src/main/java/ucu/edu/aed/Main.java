@@ -20,7 +20,11 @@ public class Main {
 
         // listaNodoE.buscar(ne1);
         System.out.println(listaNodoE.tamaño());
-        listaNodoE.eliminar(ne3);
+        listaNodoE.remover(ne3);
         System.out.println(listaNodoE.tamaño());
+        Solicitud s1 = new Solicitud(c1);
+        Infraestructura infra = Infraestructura.getInstancia();
+        infra.crearSolicitud(c1);
+
     }
 }

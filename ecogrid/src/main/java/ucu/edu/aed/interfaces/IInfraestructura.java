@@ -20,11 +20,11 @@ public interface IInfraestructura {
     boolean registrarConsumidor(Consumidor consumidor);
     void eliminarConsumidor(int id);
     Consumidor buscarConsumidor(int id);
-    void encolarSolicitud(Consumidor consumidor);
+    void encolarSolicitud(Solicitud solicitud);
     void procesarSolicitud();
     void deshacerUltimaCarga();
     ListaEnlazada<String> listarNodos();
     ListaEnlazada<String> listarConsumidores();
-    void encontrarNodoRecomendado(Solicitud solicitud);
-    void crearSolicitud(NodoEnergia nodoEnergia, Consumidor consumidor);
+    NodoEnergia encontrarNodoRecomendado(Solicitud solicitud);
+    void crearSolicitud(Consumidor consumidor);
 }

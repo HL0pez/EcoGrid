@@ -6,7 +6,7 @@ import ucu.edu.aed.tda.implementaciones.ListaEnlazada;
 import ucu.edu.aed.tda.implementaciones.Nodo;
 import ucu.edu.aed.tda.implementaciones.PilaListaEnlazada;
 
-public class Infraestructura<T> extends ListaEnlazada implements IInfraestructura {
+public class Infraestructura<T> implements IInfraestructura {
 
     private ListaEnlazada<NodoEnergia> listaNodo;
     private ListaEnlazada<Consumidor> listaConsumidor;
@@ -64,7 +64,7 @@ public class Infraestructura<T> extends ListaEnlazada implements IInfraestructur
     }
 
     public void eliminarNodo(NodoEnergia nodo) {
-        listaNodo.eliminar(nodo);
+        listaNodo.remover(nodo);
     }
 
     public Nodo buscarNodo(NodoEnergia nodo) {
@@ -72,7 +72,7 @@ public class Infraestructura<T> extends ListaEnlazada implements IInfraestructur
     }
 
     public void eliminarConsumidor(Consumidor cons) {
-        listaConsumidor.eliminar(cons);
+        listaConsumidor.remover(cons);
     }
 
     public Nodo buscarConsumidor(Consumidor cons) {
@@ -80,8 +80,7 @@ public class Infraestructura<T> extends ListaEnlazada implements IInfraestructur
     }
 
     @Override
-    public void encolarSolicitud(Consumidor consumidor) {
-        Solicitud solicitud = consumidor.crearSolicitud();
+    public void encolarSolicitud(Solicitud solicitud) {
         colaSolicitudes.poneEnCola(solicitud);
     }
 
@@ -111,15 +110,15 @@ public class Infraestructura<T> extends ListaEnlazada implements IInfraestructur
     }
 
     @Override
-    public void encontrarNodoRecomendado(Solicitud solicitud) {
+    public NodoEnergia encontrarNodoRecomendado(Solicitud solicitud) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'encontrarNodoRecomendado'");
     }
 
     @Override
-    public void crearSolicitud(NodoEnergia nodoEnergia, Consumidor consumidor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'crearSolicitud'");
+    public void crearSolicitud(Consumidor consumidor) {
+        Solicitud solicitud = new Solicitud(consumidor);
+        encolarSolicitud(solicitud);
     }
 
 }

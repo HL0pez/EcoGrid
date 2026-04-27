@@ -1,17 +1,13 @@
 package ucu.edu.aed;
 
 import ucu.edu.aed.interfaces.ISolicitud;
-import ucu.edu.aed.tda.implementaciones.Cola;
 
-public class Solicitud extends Cola<Consumidor> implements ISolicitud {
+public class Solicitud implements ISolicitud {
 
     NodoEnergia nodoEnergia;
     Consumidor consumidor;
     int demandaRequerida;
 
-    public Solicitud() {
-        super();
-    }
 
     public Solicitud(Consumidor consumidor) {
         this.nodoEnergia = null;
