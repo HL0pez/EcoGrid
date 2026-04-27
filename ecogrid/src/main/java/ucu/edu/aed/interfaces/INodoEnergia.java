@@ -9,7 +9,6 @@ int getCargaActual();
 void setFuente(String fuente);
 void setCapacidadMax(int capacidadMax);
 void setCargaActual(int cargaActual);
-void actualizarNodoEnergia(int cargaActual);
 void imprimirNodoEnergia();
 
 }

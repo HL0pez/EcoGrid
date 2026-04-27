@@ -48,13 +48,12 @@ public class NodoEnergia implements INodoEnergia {
     }
 
     @Override
-    public void setCargaActual(int cargaActual) {
-        this.cargaActual = cargaActual;
-    }
-
-    @Override
-    public void actualizarNodoEnergia(int cargaActual) {
-        this.cargaActual = cargaActual;
+    public void setCargaActual(int nuevaCargaActual) {
+        if (cargaActual + nuevaCargaActual > capacidadMax) {
+            this.cargaActual = capacidadMax;
+        } else {
+            this.cargaActual = nuevaCargaActual;
+        }
     }
 
     @Override
