@@ -63,20 +63,27 @@ public class Infraestructura<T> implements IInfraestructura {
         return resultado;
     }
 
+    @Override
     public void eliminarNodo(NodoEnergia nodo) {
         listaNodo.remover(nodo);
     }
 
-    public Nodo buscarNodo(NodoEnergia nodo) {
-        return listaNodo.buscar(nodo);
+    @Override
+    public NodoEnergia buscarNodo(NodoEnergia nodo) {
+        Nodo<NodoEnergia> nodob = listaNodo.buscar(nodo);
+
+        return nodob.getDato();
     }
 
+    @Override
     public void eliminarConsumidor(Consumidor cons) {
         listaConsumidor.remover(cons);
     }
 
-    public Nodo buscarConsumidor(Consumidor cons) {
-        return listaConsumidor.buscar(cons);
+    @Override
+    public Consumidor buscarConsumidor(Consumidor cons) {
+        Nodo<Consumidor> nodob = listaConsumidor.buscar(cons);
+        return nodob.getDato();
     }
 
     @Override
@@ -86,14 +93,20 @@ public class Infraestructura<T> implements IInfraestructura {
 
     @Override
     public void procesarSolicitud() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'procesarSolicitud'");
+        Nodo<Solicitud> solicitud = colaSolicitudes.getCabeza();
+
+        NodoEnergia nodoAsignado = encontrarNodoRecomendado(solicitud.getDato());
+
+        int nuevaCargaActuak = nodoAsignado.getCargaActual() - solicitud.getDato().getConsumidor().demanda;
+        nodoAsignado.setCargaActual(nuevaCargaActuak);
+        colaSolicitudes.quitaDeCola();
     }
 
     @Override
     public void deshacerUltimaCarga() {
         Solicitud ultimaCarga = historialTransacciones.pop();
-        ultimaCarga.nodoEnergia.setCargaActual(ultimaCarga.nodoEnergia.getCargaActual() + ultimaCarga.demandaRequerida);    
+        ultimaCarga.nodoEnergia
+                .setCargaActual(ultimaCarga.nodoEnergia.getCargaActual() + ultimaCarga.consumidor.demanda);
     }
 
     @Override
@@ -111,8 +124,24 @@ public class Infraestructura<T> implements IInfraestructura {
 
     @Override
     public NodoEnergia encontrarNodoRecomendado(Solicitud solicitud) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'encontrarNodoRecomendado'");
+        int demanda = solicitud.getConsumidor().getDemanda();
+        Nodo<NodoEnergia> actual = listaNodo.getCabeza();
+
+        NodoEnergia mejorNodo = null;
+        int menorDif = Integer.MAX_VALUE;
+
+        while (actual != null) {
+            int cargaActual = actual.getDato().getCargaActual();
+            int diferencia = cargaActual - demanda;
+
+            if (cargaActual >= demanda && diferencia < menorDif) {
+                menorDif = diferencia;
+                mejorNodo = actual.getDato();
+
+            }
+            actual = actual.getSiguiente();
+        }
+        return mejorNodo;
     }
 
     @Override

@@ -30,7 +30,7 @@ public class Cola<T> extends ListaEnlazada<T> implements TDACola<T> {
             throw new java.util.NoSuchElementException("La cola está vacía");
         }
         T datoFrente = cabeza.getDato();
-        eliminar(datoFrente);
+        remover(datoFrente);
         return datoFrente;
     }
 
