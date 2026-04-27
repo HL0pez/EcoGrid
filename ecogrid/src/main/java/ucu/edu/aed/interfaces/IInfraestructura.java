@@ -15,11 +15,11 @@ public interface IInfraestructura {
     PilaListaEnlazada<Solicitud> historialTransacciones = null;
 
     boolean registrarNodo(NodoEnergia nodo);
-    void eliminarNodo(int id);
-    NodoEnergia buscarNodo(int id);
+    void eliminarNodo(NodoEnergia nodo);
+    NodoEnergia buscarNodo(NodoEnergia nodo);
     boolean registrarConsumidor(Consumidor consumidor);
-    void eliminarConsumidor(int id);
-    Consumidor buscarConsumidor(int id);
+    void eliminarConsumidor(Consumidor cons);
+    Consumidor buscarConsumidor(Consumidor cons);
     void encolarSolicitud(Solicitud solicitud);
     void procesarSolicitud();
     void deshacerUltimaCarga();

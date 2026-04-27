@@ -7,5 +7,4 @@ public interface ISolicitud {
     void procesar(NodoEnergia nodoEnergia);
     NodoEnergia getNodoEnergia();
     Consumidor getConsumidor();
-    int getDemandaRequerida();
 }

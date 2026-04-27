@@ -92,8 +92,8 @@ public class Infraestructura<T> implements IInfraestructura {
 
     @Override
     public void deshacerUltimaCarga() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deshacerUltimaCarga'");
+        Solicitud ultimaCarga = historialTransacciones.pop();
+        ultimaCarga.nodoEnergia.setCargaActual(ultimaCarga.nodoEnergia.getCargaActual() + ultimaCarga.demandaRequerida);    
     }
 
     @Override

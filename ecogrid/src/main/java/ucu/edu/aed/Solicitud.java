@@ -6,13 +6,11 @@ public class Solicitud implements ISolicitud {
 
     NodoEnergia nodoEnergia;
     Consumidor consumidor;
-    int demandaRequerida;
 
 
     public Solicitud(Consumidor consumidor) {
         this.nodoEnergia = null;
         this.consumidor = consumidor;
-        this.demandaRequerida = consumidor.getDemanda();
     }
 
     @Override
@@ -31,9 +29,5 @@ public class Solicitud implements ISolicitud {
         return consumidor;
     }
 
-    @Override
-    public int getDemandaRequerida() {
-        return demandaRequerida;
-    }
 
 }
