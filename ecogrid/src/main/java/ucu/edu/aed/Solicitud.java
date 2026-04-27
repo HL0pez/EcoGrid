@@ -16,7 +16,8 @@ public class Solicitud implements ISolicitud {
     @Override
     public void procesar(NodoEnergia nodoEnergia) {
         this.nodoEnergia = nodoEnergia;
-
+        int nuevaCargaActual = nodoEnergia.getCargaActual() - consumidor.getDemanda();
+        nodoEnergia.setCargaActual(nuevaCargaActual);
     }
 
     @Override
@@ -27,6 +28,10 @@ public class Solicitud implements ISolicitud {
     @Override
     public Consumidor getConsumidor() {
         return consumidor;
+    }
+
+    public int getDemanda() {
+        return consumidor.getDemanda();
     }
 
 

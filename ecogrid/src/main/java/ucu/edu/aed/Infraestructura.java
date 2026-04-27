@@ -93,20 +93,19 @@ public class Infraestructura<T> implements IInfraestructura {
 
     @Override
     public void procesarSolicitud() {
-        Nodo<Solicitud> solicitud = colaSolicitudes.getCabeza();
+        Solicitud solicitud = colaSolicitudes.quitaDeCola();
 
-        NodoEnergia nodoAsignado = encontrarNodoRecomendado(solicitud.getDato());
-
-        int nuevaCargaActuak = nodoAsignado.getCargaActual() - solicitud.getDato().getConsumidor().demanda;
-        nodoAsignado.setCargaActual(nuevaCargaActuak);
-        colaSolicitudes.quitaDeCola();
+        NodoEnergia nodoAsignado = encontrarNodoRecomendado(solicitud);
+        solicitud.procesar(nodoAsignado);
+        
+        historialTransacciones.push(solicitud);
     }
 
     @Override
     public void deshacerUltimaCarga() {
         Solicitud ultimaCarga = historialTransacciones.pop();
         ultimaCarga.nodoEnergia
-                .setCargaActual(ultimaCarga.nodoEnergia.getCargaActual() + ultimaCarga.consumidor.demanda);
+                .setCargaActual(ultimaCarga.nodoEnergia.getCargaActual() + ultimaCarga.getDemanda());
     }
 
     @Override
@@ -124,7 +123,7 @@ public class Infraestructura<T> implements IInfraestructura {
 
     @Override
     public NodoEnergia encontrarNodoRecomendado(Solicitud solicitud) {
-        int demanda = solicitud.getConsumidor().getDemanda();
+        int demanda = solicitud.getDemanda();
         Nodo<NodoEnergia> actual = listaNodo.getCabeza();
 
         NodoEnergia mejorNodo = null;
