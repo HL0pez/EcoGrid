@@ -3,12 +3,14 @@ import ucu.edu.aed.tda.interfaces.TDAPila;
 
 public class PilaListaEnlazada<T> extends ListaEnlazada<T> implements TDAPila<T> {
 
+    @Override
     public void push(T elem) {
         Nodo<T> nuevoNodo = new Nodo<>(elem);
         nuevoNodo.setSiguiente(cabeza);
         cabeza = nuevoNodo;
     }
 
+    @Override
     public T pop() {
         if (cabeza == null) {
             System.out.println("La pila está vacía.");
@@ -19,6 +21,7 @@ public class PilaListaEnlazada<T> extends ListaEnlazada<T> implements TDAPila<T>
         return dato;
     }
 
+    @Override
     public T peek() {
         if (cabeza == null) {
             System.out.println("La pila está vacía.");
@@ -27,6 +30,7 @@ public class PilaListaEnlazada<T> extends ListaEnlazada<T> implements TDAPila<T>
         return cabeza.getDato();
     }
 
+    @Override
     public boolean esVacia() {
         return cabeza == null;
     }

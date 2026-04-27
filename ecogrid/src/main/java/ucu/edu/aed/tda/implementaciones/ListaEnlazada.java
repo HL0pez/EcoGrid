@@ -1,7 +1,8 @@
 package ucu.edu.aed.tda.implementaciones;
 
-import ucu.edu.aed.tda.interfaces.TDALista;
 import java.util.function.Predicate;
+
+import ucu.edu.aed.tda.interfaces.TDALista;
 
 public class ListaEnlazada<T> implements TDALista<T> {
 
@@ -182,11 +183,7 @@ public class ListaEnlazada<T> implements TDALista<T> {
 
     @Override
     public boolean esVacio() {
-        if (cabeza == null) {
-            return true;
-        } else {
-            return false;
-        }
+      return cabeza == null;
     }
 
     @Override
