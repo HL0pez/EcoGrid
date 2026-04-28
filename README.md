@@ -3,4 +3,4 @@
 Simulador de Red Eléctrica
 
 ## Diagrama UML
-![UML EcoGrid drawio](https://github.com/user-attachments/assets/5ced2e2f-b5f4-4c53-996d-4b0ebb9c8db6)
+![UML EcoGrid drawio](https://github.com/user-attachments/assets/af8ed5b6-2eb0-4eb7-8aae-f773c13e58a5)
