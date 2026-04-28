@@ -51,9 +51,4 @@ public class Consumidor implements IConsumidor {
     public void setDemanda(int demanda) {
         this.demanda = demanda;
     }
-
-    @Override
-    public Solicitud crearSolicitud() {
-        return new Solicitud(this);
-    }
 }

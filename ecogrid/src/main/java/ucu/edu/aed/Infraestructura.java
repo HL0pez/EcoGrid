@@ -41,12 +41,6 @@ public class Infraestructura<T> implements IInfraestructura {
     }
 
     public boolean registrarConsumidor(Consumidor consumidor) {
-        Nodo<Consumidor> consumidorExistente = listaConsumidor.buscar(consumidor);
-        if (consumidorExistente != null) {
-            System.out.println("Consumidor ya registrado: " + consumidorExistente.getDato().toString());
-            return false;
-        }
-
         listaConsumidor.agregar(consumidor);
         return true;
     }
@@ -93,19 +87,20 @@ public class Infraestructura<T> implements IInfraestructura {
 
     @Override
     public void procesarSolicitud() {
-        Solicitud solicitud = colaSolicitudes.quitaDeCola();
-
-        NodoEnergia nodoAsignado = encontrarNodoRecomendado(solicitud);
-        solicitud.procesar(nodoAsignado);
+        if (!colaSolicitudes.esVacio()) {
+            Solicitud solicitud = colaSolicitudes.quitaDeCola();
+            
+            NodoEnergia nodoAsignado = encontrarNodoRecomendado(solicitud);
+            solicitud.procesar(nodoAsignado);
         
-        historialTransacciones.push(solicitud);
+            historialTransacciones.push(solicitud);
+        }
     }
 
     @Override
     public void deshacerUltimaCarga() {
         Solicitud ultimaCarga = historialTransacciones.pop();
-        ultimaCarga.nodoEnergia
-                .setCargaActual(ultimaCarga.nodoEnergia.getCargaActual() + ultimaCarga.getDemanda());
+        ultimaCarga.nodoEnergia.setCargaActual(ultimaCarga.nodoEnergia.getCargaActual() + ultimaCarga.getDemanda());
     }
 
     @Override
@@ -147,6 +142,14 @@ public class Infraestructura<T> implements IInfraestructura {
     public void crearSolicitud(Consumidor consumidor) {
         Solicitud solicitud = new Solicitud(consumidor);
         encolarSolicitud(solicitud);
+    }
+
+    public Cola<Solicitud> getColaSolicitudes() {
+    return colaSolicitudes;
+    }
+
+    public PilaListaEnlazada<Solicitud> getHistorial() {
+    return historialTransacciones;
     }
 
 }
