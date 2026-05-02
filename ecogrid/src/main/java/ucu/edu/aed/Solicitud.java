@@ -29,11 +29,11 @@ public class Solicitud implements ISolicitud {
     public Consumidor getConsumidor() {
         return consumidor;
     }
-
+    @Override
     public int getDemanda() {
         return consumidor.getDemanda();
     }
-
+    
     public int getPrioridad(){
         return this.consumidor.getPrioridad();
     }

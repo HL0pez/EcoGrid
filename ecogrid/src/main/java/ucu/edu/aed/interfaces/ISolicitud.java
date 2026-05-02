@@ -5,9 +5,6 @@ import ucu.edu.aed.NodoEnergia;
 
 public interface ISolicitud {
 
-    NodoEnergia nodoEnergia = null;
-    Consumidor consumidor = null;
-
     void procesar(NodoEnergia nodoEnergia);
     NodoEnergia getNodoEnergia();
     Consumidor getConsumidor();

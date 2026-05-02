@@ -1,8 +1,8 @@
 package ucu.edu.aed.tda.implementaciones;
 
 public class NodoPrioridad<T> {
-    private T dato;
-    private int prioridad;
+    private final T dato;
+    private final int prioridad;
     private NodoPrioridad<T> siguiente;
 
     public NodoPrioridad(T dato, int prioridad) {

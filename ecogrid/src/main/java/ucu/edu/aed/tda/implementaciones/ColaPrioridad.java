@@ -1,18 +1,19 @@
 package ucu.edu.aed.tda.implementaciones;
+import ucu.edu.aed.tda.interfaces.TDAColaPrioridad;
 
-public class ColaPrioridad<T>{
+public class ColaPrioridad<T> implements TDAColaPrioridad<T>{
 
     private NodoPrioridad<T> primero;
 
-    
+    @Override
     public boolean esVacio() {
         return primero == null;
     }
-    
+    @Override
     public void vaciar() {
         primero = null;
     }
-
+    @Override
     public void insertar(T dato, int prioridad) {
         NodoPrioridad<T> nuevo = new NodoPrioridad<>(dato, prioridad);
 
@@ -31,7 +32,7 @@ public class ColaPrioridad<T>{
         nuevo.setSiguiente(actual.getSiguiente());
         actual.setSiguiente(nuevo);
     }
-
+    @Override
     public T quitar() {
         if (esVacio()) return null;
 
@@ -39,7 +40,7 @@ public class ColaPrioridad<T>{
         primero = primero.getSiguiente();
         return aux.getDato();
     }
-
+    @Override
     public T frente() {
         if (esVacio()) return null;
         return primero.getDato();

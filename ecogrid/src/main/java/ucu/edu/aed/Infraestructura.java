@@ -8,10 +8,10 @@ import ucu.edu.aed.tda.implementaciones.PilaListaEnlazada;
 
 public class Infraestructura implements IInfraestructura {
 
-    private ListaEnlazada<NodoEnergia> listaNodo;
-    private ListaEnlazada<Consumidor> listaConsumidor;
-    private ColaPrioridad<Solicitud> colaSolicitudes;
-    private PilaListaEnlazada<Solicitud> historialTransacciones;
+    private final ListaEnlazada<NodoEnergia> listaNodo;
+    private final ListaEnlazada<Consumidor> listaConsumidor;
+    private final ColaPrioridad<Solicitud> colaSolicitudes;
+    private final PilaListaEnlazada<Solicitud> historialTransacciones;
 
     private static Infraestructura instancia = null;
 
@@ -28,7 +28,7 @@ public class Infraestructura implements IInfraestructura {
         }
         return instancia;
     }
-
+    @Override
     public boolean registrarNodo(NodoEnergia nodo) {
         Nodo<NodoEnergia> nodoExistente = listaNodo.buscar(nodo);
         if (nodoExistente != null) {
@@ -39,12 +39,12 @@ public class Infraestructura implements IInfraestructura {
         listaNodo.agregar(nodo);
         return true;
     }
-
+    @Override
     public boolean registrarConsumidor(Consumidor consumidor) {
         listaConsumidor.agregar(consumidor);
         return true;
     }
-
+    @Override
     public ListaEnlazada<String> listarNodos() {
         ListaEnlazada<String> resultado = new ListaEnlazada<>();
         Nodo<NodoEnergia> nodoActual = listaNodo.getCabeza();
