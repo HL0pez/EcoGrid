@@ -19,7 +19,7 @@ public class InfraestructuraTest {
     void setUp() {
         infraestructura = Infraestructura.getInstancia();
         
-        infraestructura.getColaSolicitudes().vaciar();
+        infraestructura.getColaSolicitudes().vaciar();;
         while (!infraestructura.getHistorial().esVacia()) {
             infraestructura.getHistorial().pop();
         }
@@ -95,6 +95,29 @@ public class InfraestructuraTest {
     }
 
     @Test
+    void testProcesarSolicitudProcesaPrioridad() {
+        Consumidor consumidorBajaPrioridad = new Consumidor("Escuela", 1, 10);
+        Consumidor consumidorAltaPrioridad = new Consumidor("Empresa", 5, 10);
+
+        infraestructura.registrarConsumidor(consumidorBajaPrioridad);
+        infraestructura.registrarConsumidor(consumidorAltaPrioridad);
+
+        Solicitud solicitudBaja = new Solicitud(consumidorBajaPrioridad);
+        Solicitud solicitudAlta = new Solicitud(consumidorAltaPrioridad);
+
+        infraestructura.encolarSolicitud(solicitudAlta);
+        infraestructura.encolarSolicitud(solicitudBaja);
+
+        infraestructura.procesarSolicitud();
+
+        Solicitud procesada = infraestructura.getHistorial().peek();
+
+        assertNotNull(procesada);
+        assertEquals(1, procesada.getPrioridad());
+        assertEquals(consumidorBajaPrioridad, procesada.getConsumidor());
+    }
+
+    @Test
     void testProcesarSolicitudSinSolicitudes_noRompe() {
         assertDoesNotThrow(() -> infraestructura.procesarSolicitud());
     }
@@ -103,4 +126,6 @@ public class InfraestructuraTest {
     void testDeshacerSinHistorialNoRompe() {
         assertThrows(Exception.class, () -> infraestructura.deshacerUltimaCarga());
     }
+
+
 }

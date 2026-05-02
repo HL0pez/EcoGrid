@@ -34,5 +34,8 @@ public class Solicitud implements ISolicitud {
         return consumidor.getDemanda();
     }
 
+    public int getPrioridad(){
+        return this.consumidor.getPrioridad();
+    }
 
 }

@@ -1,9 +1,11 @@
 ucu\edu\aed\Consumidor.class
+ucu\edu\aed\tda\implementaciones\NodoPrioridad.class
 ucu\edu\aed\Infraestructura.class
 ucu\edu\aed\tda\implementaciones\Nodo.class
 ucu\edu\aed\tda\interfaces\TDAPila.class
 ucu\edu\aed\interfaces\IInfraestructura.class
 ucu\edu\aed\Solicitud.class
+ucu\edu\aed\tda\implementaciones\ColaPrioridad.class
 ucu\edu\aed\tda\implementaciones\PilaListaEnlazada.class
 ucu\edu\aed\interfaces\IConsumidor.class
 ucu\edu\aed\tda\implementaciones\Cola.class

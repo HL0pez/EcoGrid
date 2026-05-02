@@ -26,5 +26,5 @@ public interface IInfraestructura {
     ListaEnlazada<String> listarNodos();
     ListaEnlazada<String> listarConsumidores();
     NodoEnergia encontrarNodoRecomendado(Solicitud solicitud);
-    void crearSolicitud(Consumidor consumidor);
+    Solicitud crearSolicitud(Consumidor consumidor);
 }

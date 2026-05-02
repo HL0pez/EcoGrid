@@ -1,16 +1,16 @@
 package ucu.edu.aed;
 
 import ucu.edu.aed.interfaces.IInfraestructura;
-import ucu.edu.aed.tda.implementaciones.Cola;
+import ucu.edu.aed.tda.implementaciones.ColaPrioridad;
 import ucu.edu.aed.tda.implementaciones.ListaEnlazada;
 import ucu.edu.aed.tda.implementaciones.Nodo;
 import ucu.edu.aed.tda.implementaciones.PilaListaEnlazada;
 
-public class Infraestructura<T> implements IInfraestructura {
+public class Infraestructura implements IInfraestructura {
 
     private ListaEnlazada<NodoEnergia> listaNodo;
     private ListaEnlazada<Consumidor> listaConsumidor;
-    private Cola<Solicitud> colaSolicitudes;
+    private ColaPrioridad<Solicitud> colaSolicitudes;
     private PilaListaEnlazada<Solicitud> historialTransacciones;
 
     private static Infraestructura instancia = null;
@@ -18,7 +18,7 @@ public class Infraestructura<T> implements IInfraestructura {
     private Infraestructura() {
         this.listaNodo = new ListaEnlazada<>();
         this.listaConsumidor = new ListaEnlazada<>();
-        this.colaSolicitudes = new Cola<>();
+        this.colaSolicitudes = new ColaPrioridad<>();
         this.historialTransacciones = new PilaListaEnlazada<>();
     }
 
@@ -82,13 +82,13 @@ public class Infraestructura<T> implements IInfraestructura {
 
     @Override
     public void encolarSolicitud(Solicitud solicitud) {
-        colaSolicitudes.poneEnCola(solicitud);
+        colaSolicitudes.insertar(solicitud, solicitud.getPrioridad());
     }
 
     @Override
     public void procesarSolicitud() {
         if (!colaSolicitudes.esVacio()) {
-            Solicitud solicitud = colaSolicitudes.quitaDeCola();
+            Solicitud solicitud = colaSolicitudes.quitar();
             
             NodoEnergia nodoAsignado = encontrarNodoRecomendado(solicitud);
             solicitud.procesar(nodoAsignado);
@@ -139,12 +139,13 @@ public class Infraestructura<T> implements IInfraestructura {
     }
 
     @Override
-    public void crearSolicitud(Consumidor consumidor) {
+    public Solicitud crearSolicitud(Consumidor consumidor) {
         Solicitud solicitud = new Solicitud(consumidor);
         encolarSolicitud(solicitud);
+        return solicitud;
     }
 
-    public Cola<Solicitud> getColaSolicitudes() {
+    public ColaPrioridad<Solicitud> getColaSolicitudes() {
     return colaSolicitudes;
     }
 

@@ -4,7 +4,6 @@ import ucu.edu.aed.tda.implementaciones.ListaEnlazada;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
 
         NodoEnergia ne1 = new NodoEnergia(null, 1, 1);
         NodoEnergia ne2 = new NodoEnergia(null, 2, 2);
@@ -22,7 +21,7 @@ public class Main {
         System.out.println(listaNodoE.tamaño());
         listaNodoE.remover(ne3);
         System.out.println(listaNodoE.tamaño());
-        Solicitud s1 = new Solicitud(c1);
+        
         Infraestructura infra = Infraestructura.getInstancia();
         infra.crearSolicitud(c1);
 
