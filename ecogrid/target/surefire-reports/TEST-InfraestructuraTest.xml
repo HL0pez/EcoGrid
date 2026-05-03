@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="InfraestructuraTest" time="0.088" tests="10" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="InfraestructuraTest" time="0.105" tests="10" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="26"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="ES"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\oracleJdk-26\bin"/>
-    <property name="sun.java.command" value="C:\Users\Usuario\AppData\Local\Temp\surefire6135580974078265139\surefirebooter-20260502194851773_3.jar C:\Users\Usuario\AppData\Local\Temp\surefire6135580974078265139 2026-05-02T19-48-51_622-jvmRun1 surefire-20260502194851773_1tmp surefire_0-20260502194851773_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Usuario\AppData\Local\Temp\surefire15767421496087347910\surefirebooter-20260502195744306_3.jar C:\Users\Usuario\AppData\Local\Temp\surefire15767421496087347910 2026-05-02T19-57-44_168-jvmRun1 surefire-20260502195744306_1tmp surefire_0-20260502195744306_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="InfraestructuraTest"/>
     <property name="surefire.test.class.path" value="C:\Repos Algoritmos\Proyecto\EcoGrid\ecogrid\target\test-classes;C:\Repos Algoritmos\Proyecto\EcoGrid\ecogrid\target\classes;C:\Users\Usuario\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\Usuario\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\Usuario\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Usuario\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\Usuario\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Usuario\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\Usuario\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\Usuario\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Usuario\AppData\Local\Temp\surefire6135580974078265139\surefirebooter-20260502194851773_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Usuario\AppData\Local\Temp\surefire15767421496087347910\surefirebooter-20260502195744306_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="26.0.1+8-34"/>
@@ -61,12 +61,12 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="70.0"/>
   </properties>
-  <testcase name="testProcesarSolicitudMueveAHistorial" classname="InfraestructuraTest" time="0.03">
+  <testcase name="testProcesarSolicitudMueveAHistorial" classname="InfraestructuraTest" time="0.034">
     <system-out><![CDATA[Elemento no encontrado: ucu.edu.aed.NodoEnergia@56528192
 Elemento no encontrado: ucu.edu.aed.NodoEnergia@1f3f4916
 ]]></system-out>
   </testcase>
-  <testcase name="testProcesarSolicitudSinSolicitudes_noRompe" classname="InfraestructuraTest" time="0.003">
+  <testcase name="testProcesarSolicitudSinSolicitudes_noRompe" classname="InfraestructuraTest" time="0.005">
     <system-out><![CDATA[Elemento no encontrado: ucu.edu.aed.NodoEnergia@5bd03f44
 Elemento no encontrado: ucu.edu.aed.NodoEnergia@29626d54
 ]]></system-out>
@@ -76,7 +76,7 @@ Elemento no encontrado: ucu.edu.aed.NodoEnergia@29626d54
 Elemento no encontrado: ucu.edu.aed.NodoEnergia@57c758ac
 ]]></system-out>
   </testcase>
-  <testcase name="testCrearSolicitudEncolaSolicitud" classname="InfraestructuraTest" time="0.001">
+  <testcase name="testCrearSolicitudEncolaSolicitud" classname="InfraestructuraTest" time="0.002">
     <system-out><![CDATA[Elemento no encontrado: ucu.edu.aed.NodoEnergia@a9cd3b1
 Elemento no encontrado: ucu.edu.aed.NodoEnergia@13e39c73
 ]]></system-out>
@@ -86,7 +86,7 @@ Elemento no encontrado: ucu.edu.aed.NodoEnergia@13e39c73
 Elemento no encontrado: ucu.edu.aed.NodoEnergia@9225652
 ]]></system-out>
   </testcase>
-  <testcase name="testDeshacerSinHistorialNoRompe" classname="InfraestructuraTest" time="0.003">
+  <testcase name="testDeshacerSinHistorialNoRompe" classname="InfraestructuraTest" time="0.005">
     <system-out><![CDATA[Elemento no encontrado: ucu.edu.aed.NodoEnergia@7e0b85f9
 Elemento no encontrado: ucu.edu.aed.NodoEnergia@63355449
 La pila está vacía.
@@ -97,7 +97,7 @@ La pila está vacía.
 Elemento no encontrado: ucu.edu.aed.NodoEnergia@c267ef4
 ]]></system-out>
   </testcase>
-  <testcase name="testRegistrarConsumidorNoDuplicado" classname="InfraestructuraTest" time="0.001">
+  <testcase name="testRegistrarConsumidorNoDuplicado" classname="InfraestructuraTest" time="0.002">
     <system-out><![CDATA[Elemento no encontrado: ucu.edu.aed.NodoEnergia@5c30a9b0
 Elemento no encontrado: ucu.edu.aed.NodoEnergia@1ddf84b8
 ]]></system-out>

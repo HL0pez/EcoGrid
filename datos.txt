@@ -1,0 +1,4 @@
+tipo,fuente/nombre,capacidadMax/prioridad,cargaActual/demanda
+nodo,Solar,100,23
+nodo,Eólica,50,35
+consumidor,Jose,1,23
