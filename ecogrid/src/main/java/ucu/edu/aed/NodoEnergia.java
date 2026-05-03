@@ -4,14 +4,14 @@ import ucu.edu.aed.interfaces.INodoEnergia;
 public class NodoEnergia implements INodoEnergia {
 
     private static int ContadorId = 0;
-    private int Id;
+    private final int id;
     private String fuente;
     private int capacidadMax;
     private int cargaActual;
 
     public NodoEnergia(String fuente, int capacidadMax, int cargaActual) {
         
-        this.Id = ++ContadorId;
+        this.id = ++ContadorId;
         this.fuente = fuente;
         this.capacidadMax = capacidadMax;
         this.cargaActual = cargaActual;
@@ -19,7 +19,7 @@ public class NodoEnergia implements INodoEnergia {
 
     @Override
     public int getId() {
-        return Id;
+        return id;
     }
 
     @Override
@@ -59,7 +59,7 @@ public class NodoEnergia implements INodoEnergia {
     @Override
     public void imprimirNodoEnergia() {
         System.out.println("------------------------------");
-        System.out.println("Id: " + this.Id);
+        System.out.println("Id: " + this.id);
         System.out.println("Fuente: " + this.fuente);
         System.out.println("Capacidad Maxima: " + this.capacidadMax);
         System.out.println("Carga Actual: " + this.cargaActual);

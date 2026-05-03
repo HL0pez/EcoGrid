@@ -3,28 +3,28 @@ import ucu.edu.aed.interfaces.IConsumidor;
 
 public class Consumidor implements IConsumidor {
 
-    private static int ContadorId = 0;
-    private int Id;
-    private String Nombre;
+    private static int contadorId = 0;
+    private final int id;
+    private String nombre;
     private int prioridad;
     private int demanda;
 
     public Consumidor( String Nombre, int prioridad, int demanda) {
         
-        this.Id = ++ContadorId;
-        this.Nombre = Nombre;
+        this.id = ++contadorId;
+        this.nombre = Nombre;
         this.prioridad = prioridad;
         this.demanda = demanda;
     }
 
     @Override
     public int getId() {
-        return Id;
+        return id;
     }
 
     @Override
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class Consumidor implements IConsumidor {
 
     @Override
     public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+        this.nombre = Nombre;
     }
 
     @Override
