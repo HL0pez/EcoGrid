@@ -163,10 +163,6 @@ public class ListaEnlazada<T> implements TDALista<T> {
         return null;
     }
 
-    public boolean esVacia() {
-        return cabeza == null;
-
-    }
 
     @Override
     public int tamaño() {

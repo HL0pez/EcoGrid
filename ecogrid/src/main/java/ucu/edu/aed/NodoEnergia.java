@@ -4,10 +4,10 @@ import ucu.edu.aed.interfaces.INodoEnergia;
 public class NodoEnergia implements INodoEnergia {
 
     private static int ContadorId = 0;
-    public int Id;
-    public String fuente;
-    public int capacidadMax;
-    public int cargaActual;
+    private int Id;
+    private String fuente;
+    private int capacidadMax;
+    private int cargaActual;
 
     public NodoEnergia(String fuente, int capacidadMax, int cargaActual) {
         

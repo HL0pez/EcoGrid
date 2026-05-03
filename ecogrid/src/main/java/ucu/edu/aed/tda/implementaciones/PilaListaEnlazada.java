@@ -13,7 +13,6 @@ public class PilaListaEnlazada<T> extends ListaEnlazada<T> implements TDAPila<T>
     @Override
     public T pop() {
         if (cabeza == null) {
-            System.out.println("La pila está vacía.");
             return null;
         }
         T dato = cabeza.getDato();
@@ -24,15 +23,10 @@ public class PilaListaEnlazada<T> extends ListaEnlazada<T> implements TDAPila<T>
     @Override
     public T peek() {
         if (cabeza == null) {
-            System.out.println("La pila está vacía.");
             return null;
         }
         return cabeza.getDato();
     }
 
-    @Override
-    public boolean esVacia() {
-        return cabeza == null;
-    }
 
 }

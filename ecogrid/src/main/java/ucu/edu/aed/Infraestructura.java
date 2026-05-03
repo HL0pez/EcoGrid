@@ -64,9 +64,9 @@ public class Infraestructura implements IInfraestructura {
 
     @Override
     public NodoEnergia buscarNodo(NodoEnergia nodo) {
-        Nodo<NodoEnergia> nodob = listaNodo.buscar(nodo);
-
-        return nodob.getDato();
+    Nodo<NodoEnergia> nodob = listaNodo.buscar(nodo);
+    if (nodob == null) return null;
+    return nodob.getDato();
     }
 
     @Override
@@ -76,8 +76,9 @@ public class Infraestructura implements IInfraestructura {
 
     @Override
     public Consumidor buscarConsumidor(Consumidor cons) {
-        Nodo<Consumidor> nodob = listaConsumidor.buscar(cons);
-        return nodob.getDato();
+    Nodo<Consumidor> nodob = listaConsumidor.buscar(cons);
+    if (nodob == null) return null;
+    return nodob.getDato();
     }
 
     @Override
@@ -91,6 +92,7 @@ public class Infraestructura implements IInfraestructura {
             Solicitud solicitud = colaSolicitudes.quitar();
             
             NodoEnergia nodoAsignado = encontrarNodoRecomendado(solicitud);
+            if (nodoAsignado == null) return;
             solicitud.procesar(nodoAsignado);
         
             historialTransacciones.push(solicitud);
@@ -99,8 +101,9 @@ public class Infraestructura implements IInfraestructura {
 
     @Override
     public void deshacerUltimaCarga() {
-        Solicitud ultimaCarga = historialTransacciones.pop();
-        ultimaCarga.nodoEnergia.setCargaActual(ultimaCarga.nodoEnergia.getCargaActual() + ultimaCarga.getDemanda());
+    if (historialTransacciones.esVacio()) return;
+    Solicitud ultimaCarga = historialTransacciones.pop();
+    ultimaCarga.getNodoEnergia().setCargaActual(ultimaCarga.getNodoEnergia().getCargaActual() + ultimaCarga.getDemanda());
     }
 
     @Override

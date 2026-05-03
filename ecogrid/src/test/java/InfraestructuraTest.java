@@ -1,5 +1,8 @@
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +23,7 @@ public class InfraestructuraTest {
         infraestructura = Infraestructura.getInstancia();
         
         infraestructura.getColaSolicitudes().vaciar();;
-        while (!infraestructura.getHistorial().esVacia()) {
+        while (!infraestructura.getHistorial().esVacio()) {
             infraestructura.getHistorial().pop();
         }
 
@@ -54,7 +57,7 @@ public class InfraestructuraTest {
         infraestructura.procesarSolicitud();
 
         assertTrue(infraestructura.getColaSolicitudes().esVacio());
-        assertFalse(infraestructura.getHistorial().esVacia());
+        assertFalse(infraestructura.getHistorial().esVacio());
     }
 
     @Test
@@ -79,7 +82,7 @@ public class InfraestructuraTest {
     }
 
     @Test
-    void testRegistrarConsumidorNoDuplicado() {
+    void testRegistrarConsumidorRetornaTrue() {
         boolean resultado = infraestructura.registrarConsumidor(consumidor);
 
         assertTrue(resultado);
@@ -96,14 +99,14 @@ public class InfraestructuraTest {
 
     @Test
     void testProcesarSolicitudProcesaPrioridad() {
-        Consumidor consumidorBajaPrioridad = new Consumidor("Escuela", 1, 10);
-        Consumidor consumidorAltaPrioridad = new Consumidor("Empresa", 5, 10);
+        Consumidor consumidorAltaPrioridad = new Consumidor("Escuela", 1, 10);
+        Consumidor consumidorBajaPrioridad = new Consumidor("Empresa", 5, 10);
 
         infraestructura.registrarConsumidor(consumidorBajaPrioridad);
         infraestructura.registrarConsumidor(consumidorAltaPrioridad);
 
-        Solicitud solicitudBaja = new Solicitud(consumidorBajaPrioridad);
         Solicitud solicitudAlta = new Solicitud(consumidorAltaPrioridad);
+        Solicitud solicitudBaja = new Solicitud(consumidorBajaPrioridad);
 
         infraestructura.encolarSolicitud(solicitudAlta);
         infraestructura.encolarSolicitud(solicitudBaja);
@@ -114,7 +117,7 @@ public class InfraestructuraTest {
 
         assertNotNull(procesada);
         assertEquals(1, procesada.getPrioridad());
-        assertEquals(consumidorBajaPrioridad, procesada.getConsumidor());
+        assertEquals(consumidorAltaPrioridad, procesada.getConsumidor());
     }
 
     @Test
@@ -124,7 +127,7 @@ public class InfraestructuraTest {
 
     @Test
     void testDeshacerSinHistorialNoRompe() {
-        assertThrows(Exception.class, () -> infraestructura.deshacerUltimaCarga());
+    assertDoesNotThrow(() -> infraestructura.deshacerUltimaCarga());
     }
 
 

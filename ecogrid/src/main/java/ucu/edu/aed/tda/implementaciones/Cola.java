@@ -7,7 +7,7 @@ public class Cola<T> extends ListaEnlazada<T> implements TDACola<T> {
 
     @Override
     public T frente() {
-        if (esVacia()) {
+        if (esVacio()) {
             throw new java.util.NoSuchElementException("La cola está vacía");
         }
         return cabeza.getDato();
@@ -26,12 +26,12 @@ public class Cola<T> extends ListaEnlazada<T> implements TDACola<T> {
 
     @Override
     public T quitaDeCola() {
-        if (esVacia()) {
-            throw new java.util.NoSuchElementException("La cola está vacía");
-        }
-        T datoFrente = cabeza.getDato();
-        remover(datoFrente);
-        return datoFrente;
+    if (esVacio()) {
+        throw new java.util.NoSuchElementException("La cola está vacía");
+    }
+    T dato = cabeza.getDato();
+    cabeza = cabeza.getSiguiente();
+    return dato;
     }
 
     @Override

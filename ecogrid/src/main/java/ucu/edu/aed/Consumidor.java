@@ -4,10 +4,10 @@ import ucu.edu.aed.interfaces.IConsumidor;
 public class Consumidor implements IConsumidor {
 
     private static int ContadorId = 0;
-    public int Id;
-    public String Nombre;
-    public int prioridad;
-    public int demanda;
+    private int Id;
+    private String Nombre;
+    private int prioridad;
+    private int demanda;
 
     public Consumidor( String Nombre, int prioridad, int demanda) {
         

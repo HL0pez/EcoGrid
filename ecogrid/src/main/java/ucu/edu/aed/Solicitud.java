@@ -4,8 +4,8 @@ import ucu.edu.aed.interfaces.ISolicitud;
 
 public class Solicitud implements ISolicitud {
 
-    NodoEnergia nodoEnergia;
-    Consumidor consumidor;
+    private NodoEnergia nodoEnergia;
+    private final Consumidor consumidor;
 
 
     public Solicitud(Consumidor consumidor) {
